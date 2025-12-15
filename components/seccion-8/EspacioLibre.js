@@ -19,7 +19,7 @@ export default function EspacioLibre({ espacio }) {
       </div>
 
       <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white rounded-lg p-6 text-center">
-        <p className="text-lg italic">"{espacio.cita_estrategica}"</p>
+        <p className="text-lg italic">'{espacio.cita_estrategica}'</p>
       </div>
     </div>
   );

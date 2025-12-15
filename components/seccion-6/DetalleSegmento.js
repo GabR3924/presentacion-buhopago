@@ -65,7 +65,7 @@ export default function DetalleSegmento({ segmento, fase, color = "blue" }) {
             <div key={idx} className="border-l-4 border-primary-500 pl-4">
               <h5 className="font-semibold text-gray-800">{canal.canal}</h5>
               <p className="text-sm text-gray-600">{canal.razon}</p>
-              <p className="text-sm italic text-primary-700 mt-1">"{canal.mensaje}"</p>
+              <p className="text-sm italic text-primary-700 mt-1">'{canal.mensaje}'</p>
             </div>
           ))}
         </div>

@@ -74,7 +74,7 @@ export default function Seccion5() {
 
               <div className="bg-white rounded p-4 mb-3">
                 <p className="text-sm font-semibold text-gray-600 mb-1">💬 Mensaje Clave:</p>
-                <p className="text-gray-800 italic">"{hoja_de_ruta.fase_1.estrategia_marketing.mensaje_clave}"</p>
+                <p className="text-gray-800 italic">'{hoja_de_ruta.fase_1.estrategia_marketing.mensaje_clave}'</p>
               </div>
 
               <div>
@@ -123,7 +123,7 @@ export default function Seccion5() {
 
               <div className="bg-white rounded p-4 mb-3">
                 <p className="text-sm font-semibold text-gray-600 mb-1">💬 Mensaje Clave:</p>
-                <p className="text-gray-800 italic">"{hoja_de_ruta.fase_2.estrategia_comercial.mensaje_clave}"</p>
+                <p className="text-gray-800 italic">'{hoja_de_ruta.fase_2.estrategia_comercial.mensaje_clave}'</p>
               </div>
 
               <div>

@@ -7,7 +7,7 @@ import RelacionLTVCAC from "@/components/seccion-9/RelacionLTVCAC";
 import PresupuestoMarketing from "@/components/seccion-9/PresupuestoMarketing";
 import Checklist from "@/components/seccion-9/Checklist";
 import ProximosPasos from "@/components/seccion-9/ProximosPasos";
-import { resumenEjecutivoData } from "@/data/seccion-9/resumenEjecutivo";
+import { resumenEjecutivoData } from "@/data/seccion-9/unitEconomics";
 
 export default function Seccion9() {
   return (

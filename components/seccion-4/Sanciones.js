@@ -20,7 +20,7 @@ export default function Sanciones({ sanciones }) {
             </h4>
             <div className="bg-white rounded p-4 mb-3 border border-red-200">
               <p className="text-sm text-gray-700 italic">
-                "{sanciones.prohibicion_absoluta.texto}"
+                '{sanciones.prohibicion_absoluta.texto}'
               </p>
             </div>
             <div className="bg-red-100 rounded p-4">
