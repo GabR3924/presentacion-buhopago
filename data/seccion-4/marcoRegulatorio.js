@@ -1,185 +1,179 @@
-export const marcoRegulatorioData = {
-  analisis_marco_regulatorio: {
-    titulo: "ANÁLISIS DEL MARCO REGULATORIO VENEZOLANO PARA PLATAFORMAS DE PAGOS",
-    base_legal_principal: {
-      titulo: "BASE LEGAL PRINCIPAL: RESOLUCIÓN 010-25 (SUDEBAN)",
-      objeto: "Establece las 'Normas relativas a la administración y supervisión de los Riesgos de Legitimación de Capitales, Financiamiento al Terrorismo y Financiamiento de la Proliferación de Armas de Destrucción Masiva (LC/FT/FPADM)'.",
-      ambito_aplicacion: "Instituciones del Sector Bancario (Bancos Universales, Comerciales, de Inversión, Entidades de Ahorro y Préstamo, Sociedades Financieras, Casas de Cambio, Emisores de Tarjetas, etc.)",
-      conclusion_clave: "La Resolución NO menciona ni regula específicamente a las empresas fintech o agregadores de pagos. Su aplicación a estos actores es indirecta, a través de las instituciones bancarias con las que se relacionan y bajo el principio de regulación 'basada en la actividad'."
+export const marcoLegalData = {
+  titulo: "MARCO LEGAL VENEZOLANO PARA PLATAFFORMAS DE PAGOS - RESOLUCIÓN 001.21",
+
+  norma_principal: {
+    referencia: "Resolución N° 001.21 de SUDEBAN",
+    fuente: "Gaceta Oficial N° 42.162 del 6 de julio de 2021",
+    objeto: "Regular los servicios financieros prestados a través de nuevas tecnologías (Fintech) ofrecidos a las Instituciones del Sector Bancario.",
+    estado: "VIGENTE Y DE CUMPLIMIENTO OBLIGATORIO"
+  },
+
+  // DEFINICIONES CLAVE SEGÚN LA NORMA
+  definiciones_legales: {
+    itfb: {
+      termino: "Institución de Tecnología Financiera del Sector Bancario (ITFB)",
+      definicion: "Toda persona jurídica autorizada por la SUDEBAN para prestar servicios financieros contemplados en esta normativa, a través del uso de nuevas tecnologías, a las Instituciones del Sector Bancario (Art. 3.2).",
+      implicacion: "Es la figura legal que debe obtener cualquier plataforma que procese, orqueste o facilite pagos."
     },
-    clasificacion_por_actividad: {
-      titulo: "CLASIFICACIÓN POR ACTIVIDAD (¿EN QUÉ CASILLERO REGULATORIO CAIGO?)",
-      descripcion: "La obligación de cumplir normativas específicas (como la 010-25) depende de cómo se defina tu actividad ante los ojos del regulador.",
-      categorias: [
-        {
-          id: "a",
-          nombre: "Proveedor de Software o Tecnología (Puro)",
-          descripcion: "Desarrollas y vendes una API/SaaS. El cliente (ej: un banco) lo implementa en su propio entorno y bajo su responsabilidad regulatoria.",
-          nivel_riesgo: "BAJO",
-          normativa_aplicable: "Regido por derecho comercial y contratos. Debes cumplir Ley de Protección de Datos.",
-          aplicabilidad_modelo: "NO APLICA",
-          razon: "Tu plataforma no es un software que vendes; es un servicio operativo que tú gestionas y que toca flujos de dinero."
-        },
-        {
-          id: "b",
-          nombre: "Agente o Socio Tecnológico de una Institución Bancaria",
-          descripcion: "Operas bajo un contrato de mandato o servicios con un banco. El banco es el responsable final ante SUDEBAN; tú ejecutas una función específica (procesamiento de pagos) como su extensión.",
-          nivel_riesgo: "MEDIO-ALTO (Gestionable)",
-          normativa_aplicable: "El banco te impondrá sus políticas de cumplimiento (derivadas de la 010-25). Operas bajo su 'paraguas regulatorio'. Debes tener controles internos sólidos.",
-          aplicabilidad_modelo: "RUTA MÁS VIABLE",
-          razon: "Ya tienes un banco socio. El objetivo es formalizar esta relación con un contrato que te dé estabilidad, a cambio de implementar los controles que ellos exijan."
-        },
-        {
-          id: "c",
-          nombre: "Servicio de Transferencias de Dinero o Valores (STDV) - Art. 88",
-          descripcion: "Tu actividad principal es facilitar la transferencia de fondos o valores entre terceros usando cuentas propias o de clientes. Eres un intermediario financiero.",
-          nivel_riesgo: "ALTÍSIMO",
-          normativa_aplicable: "Necesitas LICENCIA/AUTORIZACIÓN EXPLÍCITA de SUDEBAN. Requiere capital regulatorio, programa completo de compliance (Oficial, manuales, auditorías), y te sometes a supervisión directa.",
-          aplicabilidad_modelo: "ZONA ROJA / RIESGO PRINCIPAL",
-          razon: "Si SUDEBAN interpreta que tu plataforma abierta que procesa pagos para múltiples terceros es un STDV, este es tu casillero. Debes hacer todo lo posible para NO caer aquí sin estar preparado."
-        },
-        {
-          id: "d",
-          nombre: "Usuario Final del Sistema Bancario",
-          descripcion: "Eres un comercio (ej: una tienda online) que usa las APIs de un banco para cobrar a tus propios clientes. El dinero se mueve para tu propia actividad comercial.",
-          nivel_riesgo: "BAJO",
-          normativa_aplicable: "Solo debes cumplir los términos de servicio del banco y la Ley de Protección de Datos.",
-          aplicabilidad_modelo: "NO APLICA",
-          razon: "Tu plataforma no es el usuario final; es la plataforma que le da el servicio a ese usuario final (el comercio)."
-        }
+    cliente_itfb: {
+      termino: "Cliente (para una ITFB)",
+      definicion: "Se refiere exclusivamente a las instituciones del sector bancario que contratan productos y/o servicios de las ITFB (Art. 3.13).",
+      implicacion: "Para una plataforma de pagos B2B, el cliente legal es el BANCO, no las empresas finales."
+    },
+    servicios_financieros_regulados: {
+      titulo: "Servicios Financieros que requieren autorización (Art. 16)",
+      lista: [
+        "Plataformas de conexión de FINTECH y de instituciones bancarias (Art. 16.4)",
+        "Pasarela de Pago (Art. 3.6)",
+        "Billetera Electrónica (Art. 3.7)",
+        "Boton de Pago (Art. 3.10)",
+        "Apertura de cuenta bancaria a través de nuevas tecnologías (Art. 16.1)"
       ]
     },
-    requisitos_clave_supervision: {
-      titulo: "REQUISITOS CLAVE Y NIVEL DE SUPERVISIÓN DE SUDEBAN",
-      descripcion: "SUDEBAN supervisa directamente y con máxima intensidad a las entidades bajo su paraguas.",
-      entidades: [
-        {
-          nombre: "Instituciones Bancarias (Bancos, Financieras)",
-          nivel_supervision: "DIRECTA Y MÁXIMA. Inspecciones, reportes obligatorios, sanciones.",
-          requisitos_clave: [
-            "Licencia bancaria.",
-            "Capital mínimo.",
-            "Cumplimiento integral de la Resolución 010-25 (SIAR, Oficial de Cumplimiento, auditorías).",
-            "Gobierno corporativo estricto."
-          ]
-        },
-        {
-          nombre: "Servicios de Transferencia (STDV)",
-          nivel_supervision: "DIRECTA Y ALTA. Similar a una institución financiera no bancaria.",
-          requisitos_clave: [
-            "Autorización/Licencia específica de SUDEBAN.",
-            "Capital regulatorio (definido por SUDEBAN).",
-            "Programa de Compliance contra LC/FT casi bancario.",
-            "Límites de transacción y reportes."
-          ]
-        },
-        {
-          nombre: "Agentes/Socios de un Banco",
-          nivel_supervision: "INDIRECTA, A TRAVÉS DEL BANCO. SUDEBAN supervisa al banco, y el banco supervisa a su agente.",
-          requisitos_clave: [
-            "Contrato formal con el banco.",
-            "Cumplimiento de las políticas de cumplimiento (LC/FT) del banco.",
-            "Controles internos (KYC, monitoreo) sujetos a auditoría por el banco."
-          ]
-        },
-        {
-          nombre: "Proveedores de Tecnología",
-          nivel_supervision: "MÍNIMA O NULA. No son sujetos financieros.",
-          requisitos_clave: [
-            "Cumplimiento de contratos comerciales.",
-            "Ley de Protección de Datos Personales.",
-            "Estándares de seguridad informática (buenas prácticas)."
-          ]
-        }
-      ]
+    psp: {
+      termino: "Proveedor no Bancario de Servicios de Pago (PSP)",
+      definicion: "Persona jurídica autorizada por el Banco Central de Venezuela para prestar servicios de pago en moneda nacional (Art. 3.25).",
+      relacion: "También debe cumplir con las regulaciones de la 001.21 si opera en el sector bancario (Art. 41)."
     }
   },
-  modelo_de_negocio: {
-    titulo: "Modelo de Negocio: Plataforma de Pagos Integral",
-    descripcion: "Una infraestructura de pagos tecnológica que permite a cualquier negocio en Venezuela recibir pagos electrónicos de forma ágil y segura.",
-    funcionamiento: {
-      vias_acceso: {
-        titulo: "Dos Vías de Acceso:",
-        opciones: [
-          {
-            publico: "Para equipos técnicos",
-            solucion: "Ofrecemos APIs para integración directa en aplicaciones, sitios web y sistemas de gestión."
-          },
-          {
-            publico: "Para todos los negocios",
-            solucion: "Ofrecemos una plataforma web intuitiva donde, sin necesidad de programación, pueden crear enlaces de pago, botones de cobro y gestionar domiciliaciones en minutos."
-          }
-        ]
+
+  // REQUISITOS DE AUTORIZACIÓN (LO MÁS IMPORTANTE)
+  autorizacion_itfb: {
+    requisito_absoluto: {
+      titulo: "AUTORIZACIÓN PREVIA OBLIGATORIA",
+      descripcion: "Para organizarse y operar como ITFB se requiere obtener una autorización emitida por la SUDEBAN, previa opinión vinculante del Órgano Superior del Sistema Financiero Nacional (OSFIN) - (Art. 4).",
+      consecuencia: "Operar sin esta autorización es ilegal y constituye infracción sancionable."
+    },
+
+    // ESTRUCTURA SOCIETARIA OBLIGATORIA
+    requisitos_estructurales: [
+      {
+        item: "Forma Jurídica",
+        requerimiento: "Sociedad Anónima (Art. 5).",
+        detalle: "Con acciones de una misma clase, no convertibles al portador."
       },
-      publico_objetivo: "Empresas registradas (Personas Jurídicas) y profesionales que necesiten recibir pagos digitales de sus clientes.",
-      proceso_transaccion: {
-        titulo: "Proceso de Transacción (Sin Custodia de Fondos):",
-        descripcion: "Flujo claro: Cliente → Cuenta Concentradora → Negocio. No retenemos fondos.",
-        pasos: [
-          {
-            orden: 1,
-            descripcion: "Un cliente paga a un negocio usando un enlace, botón o a través de una integración."
-          },
-          {
-            orden: 2,
-            descripcion: "El dinero se debita de la cuenta del cliente y se consolida temporalmente en nuestra cuenta concentradora (cuenta empresarial propia en nuestro banco socio)."
-          },
-          {
-            orden: 3,
-            descripcion: "Liquidación automática del dinero al negocio en su cuenta bancaria registrada."
-          }
-        ]
+      {
+        item: "Accionistas",
+        requerimiento: "Mínimo cinco (5) accionistas (Art. 5.a).",
+        detalle: "No pueden estar incurso en las inhabilitaciones del Art. 12."
+      },
+      {
+        item: "Capital",
+        requerimiento: "Capital mínimo totalmente pagado en efectivo (Art. 7).",
+        detalle: "Monto será fijado por SUDEBAN según el servicio y riesgos."
+      },
+      {
+        item: "Domicilio",
+        requerimiento: "Establecido en territorio nacional (Art. 5.c).",
+        detalle: "Centro de procesamiento de datos también debe estar en Venezuela (Art. 9)."
       }
-    },
-    posicionamiento_regulatorio: {
-      titulo: "Posicionamiento Regulatorio: Zona Roja vs. Zona Gris",
-      zonas: [
+    ],
+
+    // DOCUMENTACIÓN EXIGIDA (Resumen del Art. 9)
+    documentacion_solicitud: {
+      titulo: "Documentación para la solicitud de autorización (Art. 9)",
+      secciones: [
         {
-          nombre: "ZONA ROJA: El modelo ideal (pero de alto riesgo)",
-          definicion: "Ser clasificado como un Servicio de Transferencia de Dinero (STDV) por SUDEBAN.",
-          condiciones: "Si operáramos como una plataforma completamente abierta para cualquier persona (natural o jurídica) sin controles estrictos.",
-          consecuencias: "Requeriría una licencia bancaria especial, capital regulatorio alto y una estructura de cumplimiento equivalente a una institución financiera. Esto es inviable para una startup en etapa inicial.",
-          color: "red"
+          titulo: "De los Accionistas",
+          items: [
+            "Copia de cédula de identidad y certificado de inscripción RIF.",
+            "Reporte histórico del Sistema de Información Central de Riesgo (SIORI) de los últimos 5 años.",
+            "Declaración Jurada notariada de no inhabilitación.",
+            "Balance personal y certificado de ingresos de los últimos 2 períodos.",
+            "Dos referencias bancarias originales."
+          ]
         },
         {
-          nombre: "ZONA GRIS: Nuestra estrategia de lanzamiento (viable y controlada)",
-          definicion: "Operar como un Socio Tecnológico Especializado de nuestro banco socio, bajo un marco de controles acordado.",
-          estrategia: {
-            titulo: "Nuestro enfoque:",
-            puntos: [
-              {
-                item: "Enfoque B2B Exclusivo",
-                descripcion: "La plataforma está disponible solo para empresas registradas (Personas Jurídicas). Verificación mediante RIF obligatorio."
-              },
-              {
-                item: "Onboarding Verificado",
-                descripcion: "Acceso inicial por invitación o mediante un proceso de solicitud con validación de datos empresariales básicos."
-              },
-              {
-                item: "Controles Automatizados",
-                descripcion: "Límites de transacción iniciales bajos y sistema de monitoreo activo desde el primer pago."
-              },
-              {
-                item: "Alianza Bancaria Formal",
-                descripcion: "Operamos bajo un contrato con nuestro banco socio, cumpliendo sus políticas de seguridad y sometiéndonos a sus revisiones, utilizando su infraestructura regulatoria."
-              }
-            ]
-          },
-          ventaja: "Nos permite validar el mercado, generar tracción y escalar de manera controlada, construyendo el historial y los sistemas necesarios para un futuro crecimiento regulado, sin asumir inicialmente la carga de una licencia completa.",
-          color: "gray"
+          titulo: "De la Sociedad Mercantil",
+          items: [
+            "Documento constitutivo y estatutos sociales registrados.",
+            "Certificado de Inscripción en el RIF vigente.",
+            "Título de propiedad o contrato de arrendamiento del local.",
+            "Plan de Negocios detallado (servicios, instrumentos de pago, costos, mercados).",
+            "Políticas de prevención de LC/FT y seguridad de la información.",
+            "Descripción completa de la Plataforma Tecnológica (infraestructura, flujos, seguridad)."
+          ]
         }
       ]
+    },
+
+    plazo_operacion: {
+      titulo: "Plazo para iniciar operaciones",
+      descripcion: "Una vez aprobada la autorización, se debe iniciar operaciones dentro de los 120 días hábiles bancarios (Art. 14).",
+      prorroga: "Se puede solicitar una única prórroga de 90 días adicionales."
     }
   },
+
+  // SUPERVISIÓN Y OBLIGACIONES POST-AUTORIZACIÓN
+  supervision_obligaciones: {
+    nivel_supervision: "SUPERVISIÓN DIRECTA por la SUDEBAN (Art. 26)",
+    obligaciones_principales: [
+      {
+        item: "Contratos con Bancos",
+        requerimiento: "Deben ser previamente evaluados y aprobados por la SUDEBAN (Art. 32).",
+        modelo_minimo: "Deben incluir identificación de partes, obligaciones, plazo, resolución de controversias y protección al cliente (Art. 33)."
+      },
+      {
+        item: "Cumplimiento LC/FT",
+        requerimiento: "Programa integral conforme a la Resolución 010-25 y demás normativa (Art. 9, 24).",
+        componentes: "Oficial de Cumplimiento, manuales, SIAR, capacitación."
+      },
+      {
+        item: "Auditoría",
+        requerimiento: "Estados financieros auditados anualmente por auditor externo independiente inscrito en SUDEBAN (Art. 30)."
+      },
+      {
+        item: "Conservación de Registros",
+        requerimiento: "Por un plazo mínimo de diez (10) años (Art. 28).",
+        formato: "Originales archivados en formato impreso o electrónico."
+      },
+      {
+        item: "Reportes e Información",
+        requerimiento: "Proporcionar a SUDEBAN la información que requiera sobre sus actividades (Art. 25)."
+      }
+    ]
+  },
+
+  // SANCIONES Y PROHIBICIONES
+  sanciones: {
+    infraccion: "La infracción a estas normas será sancionada conforme al Decreto con Rango, Valor y Fuerza de Ley de Instituciones del Sector Bancario (Art. 42).",
+    medidas: "SUDEBAN puede imponer medidas administrativas, multas, suspensión o revocatoria de la autorización.",
+    
+    prohibicion_absoluta: {
+      titulo: "PROHIBICIÓN DE OPERAR SIN AUTORIZACIÓN (Art. 41)",
+      texto: "Las otras Instituciones de Tecnología Financiera... debiendo obtener las autorizaciones respectivas para poder operar en el país. Dichos sujetos no podrán divulgar o publicizar sus servicios en el territorio nacional, hasta tanto no obtengan la habilitación correspondiente.",
+      interpretacion: "No solo está prohibido operar, sino incluso hacer marketing o promoción de servicios financieros tecnológicos sin la autorización."
+    }
+  },
+
+  // NORMA COMPLEMENTARIA
+  normativa_complementaria: {
+    resolucion_010_25: {
+      referencia: "Resolución 010-25 de SUDEBAN",
+      objeto: "Establece las normas relativas a la administración y supervisión de los Riesgos de Legitimación de Capitales, Financiamiento al Terrorismo y Financiamiento de la Proliferación.",
+      aplicabilidad: "Una ITFB autorizada es un Sujeto Obligado y debe cumplir esta normativa en su totalidad."
+    }
+  },
+
+  // REFERENCIAS BIBLIOGRÁFICAS
+
   referencias: [
+    {
+      // REFERENCIA PRINCIPAL Y OBLIGATORIA
+      autores: "SUDEBAN",
+      año: 2021,
+      titulo: "Resolución N° 001.21: Normas que Regulan los Servicios de Tecnología Financiera del Sector Bancario (FINTECH)",
+      fuente: "Gaceta Oficial de la República Bolivariana de Venezuela N° 42.162",
+      fecha_publicacion: "6 de julio de 2021",
+      relevancia: "NORMA ESPECÍFICA Y VINCULANTE. Establece el marco legal para operar como plataforma de pagos en Venezuela.",
+      articulos_clave: ["Art. 3 (Definiciones)", "Art. 4 (Autorización)", "Art. 16 (Servicios)", "Art. 41 (Prohibición de operar sin autorización)"]
+    },
     {
       autores: "SUDEBAN",
       año: 2025,
       titulo: "Resolución 010-25: Normas relativas a la administración y supervisión de los Riesgos de LC/FT/FPADM",
       fuente: "Superintendencia de las Instituciones del Sector Bancario",
-      url: "https://www.bancrecer.com.ve/images/pdf/Resolucion_010_25.pdf",
-      fecha_acceso: "11 de diciembre de 2025"
+      relevancia: "Norma de cumplimiento complementaria para Sujetos Obligados (una ITFB autorizada lo es)."
     }
   ]
 };
-

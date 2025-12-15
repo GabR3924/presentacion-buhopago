@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import SectionCard from '@/components/common/SectionCard';
 import CitasAPA from '@/components/common/CitasAPA';
-import ClasificacionRegulatoria from '@/components/seccion-4/ClasificacionRegulatoria';
-import TablaSupervision from '@/components/seccion-4/TablaSupervision';
-import FlujoTransaccion from '@/components/seccion-4/FlujoTransaccion';
-import ZonasRegulatorias from '@/components/seccion-4/ZonasRegulatorias';
-import { marcoRegulatorioData } from '@/data/seccion-4/marcoRegulatorio';
+import DefinicionesLegales from '@/components/seccion-4/DefinicionesLegales';
+import RequisitosEstructurales from '@/components/seccion-4/RequisitosEstructurales';
+import DocumentacionRequerida from '@/components/seccion-4/DocumentacionRequerida';
+import Sanciones from '@/components/seccion-4/Sanciones';
+import { marcoLegalData } from '@/data/seccion-4/marcoRegulatorio';
 
 export default function Seccion4() {
-  const { analisis_marco_regulatorio, modelo_de_negocio, referencias } = marcoRegulatorioData;
-
   return (
     <div className="min-h-screen bg-gray-50">
       <nav className="bg-white shadow-lg">
@@ -21,7 +19,7 @@ export default function Seccion4() {
             Sección anterior
           </Link>
           <h1 className="text-2xl font-bold text-gray-800">
-            ⚖️ Sección 4: Marco Regulatorio y Modelo de Negocio
+            ⚖️ Sección 4: Marco Legal - Resolución 001.21
           </h1>
           <Link href="/" className="text-primary-600 hover:text-primary-700 flex items-center">
             Volver al inicio
@@ -34,77 +32,136 @@ export default function Seccion4() {
 
       <main className="container mx-auto px-6 py-8">
         {/* Título Principal */}
-        <SectionCard title={analisis_marco_regulatorio.titulo} />
+        <SectionCard>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">{marcoLegalData.titulo}</h2>
+        </SectionCard>
 
-        {/* Base Legal Principal */}
-        <SectionCard title={analisis_marco_regulatorio.base_legal_principal.titulo}>
+        {/* Norma Principal */}
+        <SectionCard title="📜 Norma Principal">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <p className="text-sm font-semibold text-gray-600 mb-1">Referencia</p>
+              <p className="text-lg font-bold text-primary-700">{marcoLegalData.norma_principal.referencia}</p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-gray-600 mb-1">Fuente</p>
+              <p className="text-gray-800">{marcoLegalData.norma_principal.fuente}</p>
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <p className="text-sm font-semibold text-gray-600 mb-1">Objeto</p>
+            <p className="text-gray-700">{marcoLegalData.norma_principal.objeto}</p>
+          </div>
+
+          <div className="mt-4 bg-green-50 rounded-lg p-4 border-l-4 border-green-500">
+            <p className="text-sm font-semibold text-green-800 mb-1">Estado</p>
+            <p className="text-green-900 font-bold">{marcoLegalData.norma_principal.estado}</p>
+          </div>
+        </SectionCard>
+
+        {/* Definiciones Legales */}
+        <SectionCard title="📖 Definiciones Legales Clave">
+          <DefinicionesLegales definiciones={marcoLegalData.definiciones_legales} />
+        </SectionCard>
+
+        {/* Autorización ITFB */}
+        <SectionCard title="🔐 Requisitos de Autorización como ITFB">
+          <div className="bg-red-50 rounded-lg p-6 border-2 border-red-500 mb-6">
+            <h3 className="text-xl font-bold text-red-900 mb-2">
+              {marcoLegalData.autorizacion_itfb.requisito_absoluto.titulo}
+            </h3>
+            <p className="text-red-800 mb-3">
+              {marcoLegalData.autorizacion_itfb.requisito_absoluto.descripcion}
+            </p>
+            <div className="bg-red-100 rounded p-4">
+              <p className="text-sm font-semibold text-red-900">
+                ⚠️ Consecuencia: {marcoLegalData.autorizacion_itfb.requisito_absoluto.consecuencia}
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-bold text-gray-800 mb-4">Requisitos Estructurales</h3>
+          <RequisitosEstructurales requisitos={marcoLegalData.autorizacion_itfb.requisitos_estructurales} />
+        </SectionCard>
+
+        {/* Documentación Requerida */}
+        <SectionCard title={marcoLegalData.autorizacion_itfb.documentacion_solicitud.titulo}>
+          <DocumentacionRequerida documentacion={marcoLegalData.autorizacion_itfb.documentacion_solicitud} />
+          
+          {/* Plazo de Operación */}
+          <div className="mt-6 bg-yellow-50 rounded-lg p-6 border-l-4 border-yellow-500">
+            <h4 className="font-bold text-yellow-900 mb-2">
+              ⏰ {marcoLegalData.autorizacion_itfb.plazo_operacion.titulo}
+            </h4>
+            <p className="text-yellow-800 mb-2">{marcoLegalData.autorizacion_itfb.plazo_operacion.descripcion}</p>
+            <p className="text-sm text-yellow-700">
+              <strong>Prórroga:</strong> {marcoLegalData.autorizacion_itfb.plazo_operacion.prorroga}
+            </p>
+          </div>
+        </SectionCard>
+
+        {/* Supervisión y Obligaciones */}
+        <SectionCard title="👁️ Supervisión y Obligaciones Post-Autorización">
+          <div className="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-500 mb-6">
+            <p className="font-bold text-blue-900">{marcoLegalData.supervision_obligaciones.nivel_supervision}</p>
+          </div>
+
           <div className="space-y-4">
-            <div>
-              <p className="text-sm font-semibold text-gray-600 mb-2">Objeto:</p>
-              <p className="text-gray-700">{analisis_marco_regulatorio.base_legal_principal.objeto}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm font-semibold text-gray-600 mb-2">Ámbito de Aplicación:</p>
-              <p className="text-gray-700">{analisis_marco_regulatorio.base_legal_principal.ambito_aplicacion}</p>
-            </div>
-
-            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
-              <p className="text-sm font-semibold text-yellow-800 mb-1">🔑 Conclusión Clave:</p>
-              <p className="text-yellow-900">{analisis_marco_regulatorio.base_legal_principal.conclusion_clave}</p>
-            </div>
-          </div>
-        </SectionCard>
-
-        {/* Clasificación por Actividad */}
-        <SectionCard title={analisis_marco_regulatorio.clasificacion_por_actividad.titulo}>
-          <p className="text-gray-600 mb-6">{analisis_marco_regulatorio.clasificacion_por_actividad.descripcion}</p>
-          <ClasificacionRegulatoria categorias={analisis_marco_regulatorio.clasificacion_por_actividad.categorias} />
-        </SectionCard>
-
-        {/* Requisitos y Supervisión */}
-        <SectionCard title={analisis_marco_regulatorio.requisitos_clave_supervision.titulo}>
-          <p className="text-gray-600 mb-6">{analisis_marco_regulatorio.requisitos_clave_supervision.descripcion}</p>
-          <TablaSupervision entidades={analisis_marco_regulatorio.requisitos_clave_supervision.entidades} />
-        </SectionCard>
-
-        {/* Modelo de Negocio */}
-        <SectionCard title={modelo_de_negocio.titulo}>
-          <p className="text-gray-600 mb-6">{modelo_de_negocio.descripcion}</p>
-
-          {/* Vías de Acceso */}
-          <div className="mb-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">{modelo_de_negocio.funcionamiento.vias_acceso.titulo}</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {modelo_de_negocio.funcionamiento.vias_acceso.opciones.map((opcion, idx) => (
-                <div key={idx} className="bg-primary-50 rounded-lg p-6 border-2 border-primary-300">
-                  <h4 className="font-bold text-primary-800 mb-2">👥 {opcion.publico}</h4>
-                  <p className="text-gray-700">{opcion.solucion}</p>
+            {marcoLegalData.supervision_obligaciones.obligaciones_principales.map((obl, idx) => (
+              <div key={idx} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                <h4 className="text-lg font-bold text-gray-800 mb-3">{obl.item}</h4>
+                <div className="space-y-2">
+                  <div>
+                    <p className="text-xs font-semibold text-gray-600 uppercase">Requerimiento</p>
+                    <p className="text-gray-700">{obl.requerimiento}</p>
+                  </div>
+                  {obl.modelo_minimo && (
+                    <div className="pt-2 border-t border-gray-200">
+                      <p className="text-xs font-semibold text-gray-600 uppercase">Modelo Mínimo</p>
+                      <p className="text-sm text-gray-700">{obl.modelo_minimo}</p>
+                    </div>
+                  )}
+                  {obl.componentes && (
+                    <div className="pt-2 border-t border-gray-200">
+                      <p className="text-xs font-semibold text-gray-600 uppercase">Componentes</p>
+                      <p className="text-sm text-gray-700">{obl.componentes}</p>
+                    </div>
+                  )}
+                  {obl.formato && (
+                    <div className="pt-2 border-t border-gray-200">
+                      <p className="text-xs font-semibold text-gray-600 uppercase">Formato</p>
+                      <p className="text-sm text-gray-700">{obl.formato}</p>
+                    </div>
+                  )}
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Público Objetivo */}
-          <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-500 mb-6">
-            <p className="text-sm font-semibold text-blue-800 mb-1">🎯 Público Objetivo:</p>
-            <p className="text-blue-900">{modelo_de_negocio.funcionamiento.publico_objetivo}</p>
+              </div>
+            ))}
           </div>
         </SectionCard>
 
-        {/* Flujo de Transacción */}
-        <FlujoTransaccion 
-          pasos={modelo_de_negocio.funcionamiento.proceso_transaccion.pasos}
-          descripcion={modelo_de_negocio.funcionamiento.proceso_transaccion.descripcion}
-        />
+        {/* Sanciones */}
+        <SectionCard title="⚠️ Sanciones y Prohibiciones">
+          <Sanciones sanciones={marcoLegalData.sanciones} />
+        </SectionCard>
 
-        {/* Posicionamiento Regulatorio */}
-        <SectionCard title={modelo_de_negocio.posicionamiento_regulatorio.titulo}>
-          <ZonasRegulatorias zonas={modelo_de_negocio.posicionamiento_regulatorio.zonas} />
+        {/* Normativa Complementaria */}
+        <SectionCard title="📚 Normativa Complementaria">
+          <div className="bg-primary-50 rounded-lg p-6 border-l-4 border-primary-500">
+            <h4 className="font-bold text-primary-900 mb-2">
+              {marcoLegalData.normativa_complementaria.resolucion_010_25.referencia}
+            </h4>
+            <p className="text-primary-800 mb-3">
+              <strong>Objeto:</strong> {marcoLegalData.normativa_complementaria.resolucion_010_25.objeto}
+            </p>
+            <p className="text-sm text-primary-700">
+              <strong>Aplicabilidad:</strong> {marcoLegalData.normativa_complementaria.resolucion_010_25.aplicabilidad}
+            </p>
+          </div>
         </SectionCard>
 
         {/* Referencias */}
-        <CitasAPA referencias={referencias} />
+        <CitasAPA referencias={marcoLegalData.referencias} />
       </main>
     </div>
   );
